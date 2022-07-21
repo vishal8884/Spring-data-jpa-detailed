@@ -31,9 +31,15 @@ public class Student {
 	
 	@Column(name = "email_address", nullable = false)
 	private String emailId;
-	private String guardianName;
-	private String guardianEmail;
-	private String guardianMobile;
+	
+	private Guardian guardian;
+	
+	
 }
+
+
+
+
+
 //@GeneratedValue(strategy = GenerationType.SEQUENCE)
 // for reference
