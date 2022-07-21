@@ -30,3 +30,4 @@ public class Student {
 	private String guardianMobile;
 }
 //@GeneratedValue(strategy = GenerationType.SEQUENCE)
+// for reference
