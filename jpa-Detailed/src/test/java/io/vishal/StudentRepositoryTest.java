@@ -37,12 +37,12 @@ public class StudentRepositoryTest {
 		
 		Guardian guardian = Guardian.builder()
 				.name("babar")
-				.email("babar@yahoo.com")
+				.email("babar2@yahoo.com")
 				.mobile("3247834343")
 				.build();
 		
 		Student student = Student.builder()
-				.emailId("sivamdube@gmail.com")
+				.emailId("sivamdube2@gmail.com")
 				.firstName("sivam")
 				.lastName("dube")
 				.guardian(guardian)
@@ -56,6 +56,26 @@ public class StudentRepositoryTest {
 	public void printAllStudent() {
 		List<Student> studentList = studentRepository.findAll();
 		System.out.println("student list :: "+studentList);
+	}
+	
+	
+	@Test
+	public void getStudentByFirstName() {
+		List<Student> students = studentRepository.findByfirstName("sivam");
+		System.out.println("students obtained by firstName :: "+students);
+	}
+	
+	
+	@Test
+	public void getStudentByFirstNameContaining() {
+		List<Student> students = studentRepository.findByfirstNameContaining("si");
+		System.out.println("students obtained by firstName containing :: "+students);
+	}
+	
+	@Test
+	public void printStudentBasedOnGuardianName() {
+		List<Student> students = studentRepository.findByGuardianName("bob");
+		System.out.println("students obtained by guardian Name :: "+students);
 	}
 	
 	

@@ -1,6 +1,7 @@
 package io.vishal.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,6 +33,7 @@ public class Student {
 	@Column(name = "email_address", nullable = false)
 	private String emailId;
 	
+	@Embedded
 	private Guardian guardian;
 	
 	
