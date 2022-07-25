@@ -91,4 +91,11 @@ public class CourseRepositoryTest {
 		System.out.println("course_sortByTitleAndCreditDesc :: "+course_sortByTitleAndCreditDesc);
 	}
 	
+	@Test
+	public void printFindByTitleContaining() {
+		Pageable firstPage_tenRecords = PageRequest.of(0, 10);
+		
+		List<Course> courses_firstPage_tenRecords = courseRepository.findByCourseTitleContaining("P",firstPage_tenRecords).getContent();  //D is starting like *
+		System.out.println("courses_firstPage_tenRecords :: "+courses_firstPage_tenRecords);
+	}
 }
