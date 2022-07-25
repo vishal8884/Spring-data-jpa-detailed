@@ -36,15 +36,15 @@ public class StudentRepositoryTest {
 	public void saveStudentWithGuardian() {
 		
 		Guardian guardian = Guardian.builder()
-				.name("babar")
-				.email("babar2@yahoo.com")
+				.name("habba")
+				.email("haaba@yahoo.com")
 				.mobile("3247834343")
 				.build();
 		
 		Student student = Student.builder()
-				.emailId("sivamdube2@gmail.com")
-				.firstName("sivam")
-				.lastName("dube")
+				.emailId("velvet@gmail.com")
+				.firstName("velvet")
+				.lastName("jie")
 				.guardian(guardian)
 				.build();
 		
@@ -94,5 +94,17 @@ public class StudentRepositoryTest {
 	public void printGetStudentByEmailAddressNativeQuery() {
 		Student student = studentRepository.getStudentByEmailIdNative("water@gmail.com");
 		System.out.println("student by email address native query:: "+student);
+	}
+	
+	@Test
+	public void printGetStudentByEmailAddressNativeQueryWithNameParam() {
+		Student student = studentRepository.getStudentByEmailIdNative("water@gmail.com");
+		System.out.println("student by email address native query named param:: "+student);
+	}
+	
+	@Test
+	public void updateFirstNameByEmailAddress(){
+		int res = studentRepository.updateStudentNameByEmailId("water aaa", "water@gmail.com");
+		System.out.println("updated by firsyName "+res);
 	}
 }

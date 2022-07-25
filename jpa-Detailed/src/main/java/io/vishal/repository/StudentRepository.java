@@ -2,8 +2,12 @@ package io.vishal.repository;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import io.vishal.entity.Student;
@@ -35,4 +39,15 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 	//native sql query
 	@Query(nativeQuery = true, value = "select * from tbl_student s where s.email_address = ?1")
 	public Student getStudentByEmailIdNative(String emailId);
+	
+	
+	
+	//native name paramater
+	@Query(nativeQuery = true, value = "select * from tbl_student s where s.email_address = :emailId")
+	public Student getStudentByEmailIdNativeNamedParam(@Param("emailId") String emailId);
+	
+	@Modifying
+	@Transactional
+	@Query(nativeQuery = true, value = "update tbl_student set first_name =?1 where email_address =?2")
+	int updateStudentNameByEmailId(String firstName, String emailId);
 }
