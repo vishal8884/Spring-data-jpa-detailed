@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import io.vishal.entity.Course;
+import io.vishal.entity.Guardian;
+import io.vishal.entity.Student;
 import io.vishal.entity.Teacher;
 import io.vishal.repository.CourseRepository;
 
@@ -41,6 +43,8 @@ public class CourseRepositoryTest {
 		
 		courseRepository.save(course);
 	}
+	
+	/////////////////////////////////Start of pagination///////////////////////////////////////////////////////////
 	
 	@Test
 	public void findAllPagination() {
@@ -98,4 +102,33 @@ public class CourseRepositoryTest {
 		List<Course> courses_firstPage_tenRecords = courseRepository.findByCourseTitleContaining("P",firstPage_tenRecords).getContent();  //D is starting like *
 		System.out.println("courses_firstPage_tenRecords :: "+courses_firstPage_tenRecords);
 	}
+	
+	////////////////////////////////////////////////END of pagination and sorting////////////////////////////////////////////////////////////////////////
+	
+//	@Test
+//	public void saveCourseWithStudentAndTeacher() {
+//		
+//		Teacher teacher = Teacher.builder()
+//				.firstName("raghu")
+//				.lastName("rva")
+//				.build();
+//		
+//		Student student = Student.builder()
+//				.firstName("aroha")
+//				.lastName("kaman")
+//				.emailId("arohakaman@outlook.com")
+//				.guardian(Guardian.builder().name("basan").email("basan@kmail.com").mobile("9452735323").build())
+//				.build();
+//		
+//		Course course = Course.builder()
+//				.courseTitle("AI")
+//				.credit(12)
+//				.teacher(teacher)
+//				.build();
+//		
+//		course.addStudents(student);
+//		
+//		courseRepository.save(course);
+//	}
+	
 }
