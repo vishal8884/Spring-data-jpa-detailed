@@ -16,16 +16,16 @@ public class CourseMaterialRepositoryTest {
 	@Autowired
 	private CourseMaterialRepository courseMaterialRespository;
 	
-	//@Test
+	@Test
 	public void saveCourseMaterial() {
 		
 		Course course = Course.builder()
-				.courseTitle("webdev")
+				.courseTitle("dailydev")
 				.credit(2)
 				.build();
 		
 		CourseMaterial courseMaterial = CourseMaterial.builder()
-				.url("www.web2dev.com")
+				.url("www.day2dev.com")
 				.course(course)
 				.build();
 		

@@ -34,7 +34,7 @@ public class CourseMaterial {
 	//fetch type --> do we need to fetch coach table also or only its id...
 	//lazy --> eg     CourseMaterial(courseMaterialId=6, url=www.web2dev.com)]
 	//Eager --> eg    [CourseMaterial(courseMaterialId=2, url=www.google.com, course=Course(courseId=1, courseTitle=DSA, credit=6))
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY) // cascade gives permission to save course table along with this
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false) // cascade gives permission to save course table along with this
 	@JoinColumn(name = "course_id", referencedColumnName = "courseId")
 	private Course course;
 
