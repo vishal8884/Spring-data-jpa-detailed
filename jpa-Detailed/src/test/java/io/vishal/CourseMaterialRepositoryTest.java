@@ -1,5 +1,7 @@
 package io.vishal;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,7 +16,7 @@ public class CourseMaterialRepositoryTest {
 	@Autowired
 	private CourseMaterialRepository courseMaterialRespository;
 	
-	@Test
+	//@Test
 	public void saveCourseMaterial() {
 		
 		Course course = Course.builder()
@@ -28,5 +30,11 @@ public class CourseMaterialRepositoryTest {
 				.build();
 		
 		courseMaterialRespository.save(courseMaterial);
+	}
+	
+	@Test
+	public void printAllCourses() {
+		List<CourseMaterial> courseMaterials = courseMaterialRespository.findAll();
+		System.out.println("course materails list :: "+courseMaterials);
 	}
 }

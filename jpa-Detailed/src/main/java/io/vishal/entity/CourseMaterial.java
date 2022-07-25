@@ -2,6 +2,7 @@ package io.vishal.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,12 +14,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
+@ToString(exclude = "course")     //this excludes course object in tostring
 public class CourseMaterial {
 	
 	@Id
@@ -28,7 +31,10 @@ public class CourseMaterial {
 	
 	private String url;
 	
-	@OneToOne(cascade = CascadeType.ALL) // cascade gives permission to save course table along with this
+	//fetch type --> do we need to fetch coach table also or only its id...
+	//lazy --> eg     CourseMaterial(courseMaterialId=6, url=www.web2dev.com)]
+	//Eager --> eg    [CourseMaterial(courseMaterialId=2, url=www.google.com, course=Course(courseId=1, courseTitle=DSA, credit=6))
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY) // cascade gives permission to save course table along with this
 	@JoinColumn(name = "course_id", referencedColumnName = "courseId")
 	private Course course;
 
