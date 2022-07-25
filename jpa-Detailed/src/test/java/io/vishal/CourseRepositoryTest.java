@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import io.vishal.entity.Course;
 import io.vishal.entity.Teacher;
@@ -73,4 +74,21 @@ public class CourseRepositoryTest {
 		long totalPages_byPage2Logic = courseRepository.findAll(secondPageWithTwoRecords).getTotalPages();
 		System.out.println("total pages page2 logic:: "+totalPages_byPage2Logic);
 	}
+	
+	@Test
+	public void findAllPaginationWithSorting() {
+		Pageable sortByTitle = PageRequest.of(0,2,Sort.by("courseTitle"));
+		Pageable sortByCreditDesc = PageRequest.of(0,2, Sort.by("credit").descending());
+		Pageable sortByTitleAndCreditDesc = PageRequest.of(0, 2, Sort.by("courseTitle").descending().and(Sort.by("credit")));
+		
+		List<Course> course_sortByTitle = courseRepository.findAll(sortByTitle).getContent();
+		System.out.println("course_sortByTitle :: "+course_sortByTitle);
+		
+		List<Course> course_sortByCreditDesc = courseRepository.findAll(sortByCreditDesc).getContent();
+		System.out.println("course_sortByCreditDesc :: "+course_sortByCreditDesc);
+		
+		List<Course> course_sortByTitleAndCreditDesc = courseRepository.findAll(sortByTitleAndCreditDesc).getContent();
+		System.out.println("course_sortByTitleAndCreditDesc :: "+course_sortByTitleAndCreditDesc);
+	}
+	
 }
