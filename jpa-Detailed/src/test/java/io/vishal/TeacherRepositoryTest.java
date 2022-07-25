@@ -16,25 +16,25 @@ public class TeacherRepositoryTest {
 	@Autowired
 	private TeacherRepository teacherRepository;
 	
-	@Test
-	public void saveTeacher() {
-		
-		Course courseDBA = Course.builder()
-				.courseTitle("DBA")
-				.credit(5)
-				.build();
-		
-		Course coursePython = Course.builder()
-				.courseTitle("Python")
-				.credit(5)
-				.build();
-		
-		Teacher teacher = Teacher.builder()
-				.firstName("Qutab")
-				.lastName("khan")
-				.courses(List.of(courseDBA,coursePython))
-				.build();
-		
-		teacherRepository.save(teacher);
-	}
+//	@Test
+//	public void saveTeacher() {
+//		
+//		Course courseDBA = Course.builder()
+//				.courseTitle("DBA")
+//				.credit(5)
+//				.build();
+//		
+//		Course coursePython = Course.builder()
+//				.courseTitle("Python")
+//				.credit(5)
+//				.build();
+//		
+//		Teacher teacher = Teacher.builder()
+//				.firstName("Qutab")
+//				.lastName("khan")
+//				.courses(List.of(courseDBA,coursePython))
+//				.build();
+//		
+//		teacherRepository.save(teacher);
+//	}
 }
