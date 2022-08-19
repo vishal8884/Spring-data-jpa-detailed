@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,11 +41,11 @@ public class Course {
 	private CourseMaterial courseMaterial;
 	
 	
-	@ManyToOne(cascade = CascadeType.ALL)                                                    // cascade type means when we update even the child table needs to updated or not
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)                                                    // cascade type means when we update even the child table needs to updated or not
 	@JoinColumn(name="teacher_id",referencedColumnName = "teacherId")                        //this and OneToMany no change in db..just change in objects
 	private Teacher teacher;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)                          // fetch type eager fetches the students also in java object
 	@JoinTable(name = "student_course_mapping", joinColumns = @JoinColumn(name = "course_id", referencedColumnName = "courseId")
 	                                          , inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName = "studentId"))
 	private List<Student> students;                                                          //new table needs to created for many to many
