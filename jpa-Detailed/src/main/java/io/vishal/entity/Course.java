@@ -38,6 +38,8 @@ public class Course {
 	
 	@OneToOne(mappedBy = "course")   //this says that already mapped by course attribute in CourseMaterial.class
 	private CourseMaterial courseMaterial;
+	
+	
 	@ManyToOne(cascade = CascadeType.ALL)                                                    // cascade type means when we update even the child table needs to updated or not
 	@JoinColumn(name="teacher_id",referencedColumnName = "teacherId")                        //this and OneToMany no change in db..just change in objects
 	private Teacher teacher;
