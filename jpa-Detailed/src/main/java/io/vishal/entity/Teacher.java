@@ -31,6 +31,6 @@ public class Teacher {
 	private String lastName;
 	
 //	@OneToMany(cascade = CascadeType.ALL)
-//	@JoinColumn(name="teacher_id", referencedColumnName = "teacherId")             //many to one is preferred by JPA team
+//	@JoinColumn(name="teacher_id", referencedColumnName = "teacherId")             //many to one is preferred by JPA team because for couuse obj teacher is complusory not vice versa
 //	private List<Course> courses;
 }
