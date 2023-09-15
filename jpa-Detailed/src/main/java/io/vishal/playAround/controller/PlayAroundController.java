@@ -29,10 +29,18 @@ public class PlayAroundController {
 			System.out.println("Saving course :: "+course);
 			courseRepo.save(course);
 		} catch (Exception e) {
-			log.error("Exception occured while saving course :: {}",e.getLocalizedMessage());
+			System.out.println(e);
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 		
 		return ResponseEntity.ok().body("Success");
 	}
+	
+	
+//	public ResponseEntity<String> insertStudents(@RequestBody Course course){
+//		
+//		courseRepo.SE
+//		
+//		return ResponseEntity.ok().body("Success");
+//	}
 }
